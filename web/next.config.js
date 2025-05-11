@@ -37,3 +37,6 @@ const config = {
 };
 
 export default config;
+module.exports = {
+  allowedDevOrigins: ['savorcare.com', '*.savorcare.com'],
+}
