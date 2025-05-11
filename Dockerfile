@@ -67,6 +67,6 @@ RUN pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/we
 RUN npm ci --omit=dev --ignore-scripts
 RUN npm install -g @marp-team/marp-cli
 RUN cd web && wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash - && pnpm install
-
+EXPOSE 3000
 # Specify the command to run the application
 ENTRYPOINT ["/app/bootstrap.sh", "-d"]
