@@ -25,7 +25,7 @@ const config = {
       },
     },
   },
-
+  allowedDevOrigins: ['savorcare.com', '*.savorcare.com'],
   // For production mode
   webpack: (config) => {
     config.module.rules.push({
