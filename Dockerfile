@@ -66,6 +66,8 @@ RUN pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/we
 # Install only production dependencies
 RUN npm ci --omit=dev --ignore-scripts
 RUN npm install -g @marp-team/marp-cli
+RUN apt-get update && apt-get install -y ca-certificates wget --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 RUN cd web && wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash - && pnpm install
 EXPOSE 3000
 # Specify the command to run the application
