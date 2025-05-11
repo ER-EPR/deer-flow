@@ -65,9 +65,7 @@ RUN pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/we
     pip install uv --no-cache-dir && uv sync
 # Install only production dependencies
 RUN npm install -g @marp-team/marp-cli
-RUN apt-get update && apt-get install -y ca-certificates wget --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
-RUN cd web && wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh - && /root/.local/share/pnpm/pnpm install
+RUN cd web && npm install -g pnpm@latest-10 && pnpm install
 EXPOSE 3000
 # Specify the command to run the application
 ENTRYPOINT ["/app/bootstrap.sh", "-d"]
