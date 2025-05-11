@@ -25,7 +25,7 @@ const config = {
       },
     },
   },
-
+  allowedDevOrigins: ['savorcare.com', '*.savorcare.com'],
   // For production mode
   webpack: (config) => {
     config.module.rules.push({
@@ -37,6 +37,3 @@ const config = {
 };
 
 export default config;
-module.exports = {
-  allowedDevOrigins: ['savorcare.com', '*.savorcare.com'],
-}
