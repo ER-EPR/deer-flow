@@ -61,7 +61,7 @@ RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && npm --version
 # Copy the rest of the application source code
 COPY . .
-RUN pip install uv && uv sync
+RUN pip install uv -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --no-cache-dir && uv sync
 # Install only production dependencies
 RUN npm ci --omit=dev --ignore-scripts
 RUN npm install -g @marp-team/marp-cli
