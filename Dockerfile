@@ -60,11 +60,13 @@ RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && node --version \
     && npm --version
 # Copy the rest of the application source code
+RUN npm install -g @marp-team/marp-cli && \
+    apt-get update && apt-get install -y ca-certificates --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* 
 COPY . .
 RUN pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple && \
     pip install uv --no-cache-dir && uv sync
 # Install only production dependencies
-RUN npm install -g @marp-team/marp-cli
 RUN cd web && npm install -g pnpm@latest-10 && pnpm install
 EXPOSE 3000
 EXPOSE 8000
