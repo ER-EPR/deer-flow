@@ -67,5 +67,6 @@ RUN pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/we
 RUN npm install -g @marp-team/marp-cli
 RUN cd web && npm install -g pnpm@latest-10 && pnpm install
 EXPOSE 3000
+EXPOSE 8000
 # Specify the command to run the application
 ENTRYPOINT ["/app/bootstrap.sh", "-d"]
